@@ -1,20 +1,20 @@
-
 SHELL := /bin/bash
-REPO_NAME := agentic-ai-workflow
+export PATH := /usr/local/bin:$(PATH)
+export
 
 ifeq ($(OS),Windows_NT)
-	PYTHON = python.exe
-	ACTIVATE_VENV = venv\Scripts\activate
+    PYTHON := python.exe
+    ACTIVATE_VENV := venv\Scripts\activate
 else
-	PYTHON = python3.13
-	ACTIVATE_VENV = source venv/bin/activate
+    PYTHON := python3.13
+    ACTIVATE_VENV := source venv/bin/activate
 endif
-PIP = $(PYTHON) -m pip
+PIP := $(PYTHON) -m pip
 
 ifneq ("$(wildcard .env)","")
-	include .env
+    include .env
 else
-	$(shell cp .env-example .env)
+    $(shell cp .env.example .env)
 endif
 
 .PHONY: analyze pre-commit init lint tear-down test build release
@@ -44,8 +44,7 @@ init:
 	$(PYTHON) -m venv venv && \
 	$(ACTIVATE_VENV) && \
 	$(PIP) install --upgrade pip && \
-	$(PIP) install -r requirements/base.txt && \
-	deactivate
+	$(PIP) install -r requirements/base.txt
 
 # ---------------------------------------------------------
 # create python virtual environments for dev
