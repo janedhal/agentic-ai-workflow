@@ -1,9 +1,14 @@
-## [0.1.6](https://github.com/FullStackWithLawrence/agentic-ai-workflow/compare/v0.1.5...v0.1.6) (2026-04-02)
+# Change Log
 
+All notable changes to this project will be documented in this file.
+
+The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
+
+## [0.1.6](https://github.com/FullStackWithLawrence/agentic-ai-workflow/compare/v0.1.5...v0.1.6) (2026-04-02)
 
 ### Bug Fixes
 
-* force a new release ([0f60ec7](https://github.com/FullStackWithLawrence/agentic-ai-workflow/commit/0f60ec7c9a9c15a83bd74315ed0271ae49c36d3f))
+- force a new release ([0f60ec7](https://github.com/FullStackWithLawrence/agentic-ai-workflow/commit/0f60ec7c9a9c15a83bd74315ed0271ae49c36d3f))
 
 ## [0.1.5](https://github.com/FullStackWithLawrence/agentic-ai-workflow/compare/v0.1.4...v0.1.5) (2025-10-16)
 
@@ -16,12 +21,6 @@
 ### Bug Fixes
 
 - add codecove badge ([231bbeb](https://github.com/FullStackWithLawrence/agentic-ai-workflow/commit/231bbeb400d0e1b2eabe3bf4fd1e4467fe017d72))
-
-# Change Log
-
-All notable changes to this project will be documented in this file.
-
-The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [0.1.3](https://github.com/FullStackWithLawrence/agentic-ai-workflow/compare/v0.1.2...v0.1.3) (2025-10-16)
 
