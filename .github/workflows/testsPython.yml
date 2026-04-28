@@ -69,28 +69,24 @@ jobs:
   notifications:
     needs: python-unit-tests
     runs-on: ubuntu-latest
+    if: always() 
     steps:
-      - name: Notify on test results
-        run: |
-          - name: Notify on Failure
+      - name: Send mail
         if: ${{ needs.python-unit-tests.result == 'failure' }}
-        run: |
-          curl --location 'https://api.openai.lawrencemcdaniel.com/passthrough_v2/' \
-          --header 'x-api-key: ${{ secrets.PASSTHROUGH_API_KEY }}' \
-          --header 'Content-Type: application/json' \
-          --data '{
-              "model": "gpt-4o-mini",
-              "end_point": "ChatCompletion",
-              "temperature": 0.50,
-              "max_tokens": 1024,
-              "messages": [
-                  {
-                      "role": "system",
-                      "content": "You are a helpful assistant."
-                  },
-                  {
-                      "role": "user",
-                      "content": "The Python Unit Tests failed for ${{ github.repository }}."
-                  }
-              ]
-          }'
+        uses: dawidd6/action-send-mail@v3
+        with:
+          # SMTP server details (e.g., smtp.gmail.com)
+          server_address: ${{ secrets.MAIL_SERVER }}
+          server_port: 465
+          username: ${{ secrets.MAIL_USERNAME }}
+          password: ${{ secrets.MAIL_PASSWORD }}
+          subject: "❌ Build Failed: ${{ github.repository }}"
+          # This sends the email to the person who pushed the code
+          to: ${{ github.event.pusher.email }}
+          from: GitHub Actions Bot
+          body: |
+            The Python Unit Tests failed for ${{ github.repository }}.
+            Commit: ${{ github.sha }}
+            Pushed by: ${{ github.actor }}
+            
+            Check the logs here: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
