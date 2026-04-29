@@ -73,7 +73,7 @@ jobs:
     if: always() 
     steps:
       - name: Send mail
-        needs.python-unit-tests.result == 'failure'
+        if: needs.python-unit-tests.result == 'failure'
         uses: dawidd6/action-send-mail@v3
         with:
           # SMTP server details (Example for Gmail)
@@ -82,7 +82,7 @@ jobs:
           username: ${{ secrets.MAIL_USERNAME }}
           password: ${{ secrets.MAIL_PASSWORD }}
           subject: "CI Build Failed: ${{ github.repository }}"
-          to: janednho@gmail.com
+          to: #your email here
           from: GitHub Actions Workflow
           body: |
             The Python Unit Tests failed for the repository ${{ github.repository }}.
